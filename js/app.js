@@ -1,3 +1,6 @@
+// Get the cat list that will hold the options with cats.
+const catList = document.querySelector('.cat-list');
+
 // Get the wrapper that will hold the cats
 const wrapper = document.querySelector('.wrapper');
 
@@ -24,7 +27,10 @@ const allCats = [{
   clicks: 0
 }];
 
-/* Create DOM new div '.holder' for every cat, that contains:
+/*
+ * Create new img with the image of the cat, and place it inside cat-list.
+ * Add event listener to that image to switch the cat displayed on the wrapper.
+ * Create new div '.holder' for every cat, that contains:
  * <p class="name"> - cats name
  * <img src="allCats[index].srcImg"> - cats image
  * <p class="counter"> - counter for clicks
@@ -32,6 +38,14 @@ const allCats = [{
  * display the '.holder' on the DOM
  */
 for (let i = 0; i < allCats.length; i++) {
+  // Create img to display cat image on the '.cat-list'.
+  const catOption = document.createElement('img');
+
+  // Add the image of the cat to the cat option.
+  catOption.setAttribute('src', allCats[i].imgSrc);
+
+  // Display the cat option inside the '.cat-list'.
+  catList.appendChild(catOption);
 
   // Create div class 'holder'
   const holder = document.createElement("div");
