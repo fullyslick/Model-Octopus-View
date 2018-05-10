@@ -4,6 +4,11 @@ const catList = document.querySelector('.cat-list');
 // Get the displayArea that will hold the cats
 const displayArea = document.querySelector('.displayArea');
 
+/* Global variable that will hold the get the cat property clicks,
+ * and then this global variable will be displayed on counter as number of clicks.
+ */
+let clicksToDisplay = 0;
+
 // Holds the cats that will be displayed.
 const allCats = [{
   name: 'Jacky',
@@ -28,6 +33,53 @@ const allCats = [{
 }];
 
 /*
+ * Build the displayArea HTML structure:
+ * Create new div '.holder' and inside of it:
+ * <p class="name"> - cats name
+ * <img src=""> - cats image
+ * <p class="counter"> - counter for clicks
+ * eventListtener that will update the counter on click of the image
+ * display the '.holder' on the DOM
+ */
+function buildDisplayArea() {
+  // Create div class 'holder'
+  const holder = document.createElement("div");
+
+  // Add 'holder' class to the new div.
+  holder.setAttribute('class', 'holder');
+
+  // Inside holder create <p> that will hold the name.
+  const name = document.createElement('p');
+
+  // Add class 'name' to that <p>.
+  name.setAttribute('class', 'name');
+
+  // Add the name inside holder.
+  holder.appendChild(name);
+
+  // Create img element that will hold the image of cat.
+  const imgCat = document.createElement('img');
+
+  // Add the image inside holder.
+  holder.appendChild(imgCat);
+
+  // Create <p> that will hold the counter
+  const counter = document.createElement('p');
+
+  // Add class 'counter'.
+  counter.setAttribute('class', 'counter');
+
+  // Add the image inside holder.
+  holder.appendChild(counter);
+
+  // Display the '.holder' div on DOM.
+  displayArea.appendChild(holder);
+}
+
+// First build the display area structure and then after that populate the cat list.
+buildDisplayArea();
+
+/*
  * Create new img with the image of the cat, and place it inside cat-list.
  * Add event listener to that image to switch the cat displayed on the displayArea.
  */
@@ -41,48 +93,6 @@ for (let i = 0; i < allCats.length; i++) {
   // Display the cat option inside the '.cat-list'.
   catList.appendChild(catOption);
 }
-
-/*
- * Build the displayArea HTML structure:
- * Create new div '.holder' and inside of it:
- * <p class="name"> - cats name
- * <img src=""> - cats image
- * <p class="counter"> - counter for clicks
- * eventListtener that will update the counter on click of the image
- * display the '.holder' on the DOM
- */
-// Create div class 'holder'
-const holder = document.createElement("div");
-
-// Add 'holder' class to the new div.
-holder.setAttribute('class', 'holder');
-
-// Inside holder create <p> that will hold the name.
-const name = document.createElement('p');
-
-// Add class 'name' to that <p>.
-name.setAttribute('class', 'name');
-
-// Add the name inside holder.
-holder.appendChild(name);
-
-// Create img element that will hold the image of cat.
-const imgCat = document.createElement('img');
-
-// Add the image inside holder.
-holder.appendChild(imgCat);
-
-// Create <p> that will hold the counter
-const counter = document.createElement('p');
-
-// Add class 'counter'.
-counter.setAttribute('class', 'counter');
-
-// Add the image inside holder.
-holder.appendChild(counter);
-
-// Display the '.holder' div on DOM.
-displayArea.appendChild(holder);
 
 /*
  * Create new div '.holder' for every cat, that contains:
