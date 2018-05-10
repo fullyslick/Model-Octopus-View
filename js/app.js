@@ -41,43 +41,39 @@ const allCats = [{
  * eventListtener that will update the counter on click of the image
  * display the '.holder' on the DOM
  */
-function buildDisplayArea() {
-  // Create div class 'holder'
-  const holder = document.createElement("div");
 
-  // Add 'holder' class to the new div.
-  holder.setAttribute('class', 'holder');
+// Create div class 'holder'
+const holder = document.createElement("div");
 
-  // Inside holder create <p> that will hold the name.
-  const name = document.createElement('p');
+// Add 'holder' class to the new div.
+holder.setAttribute('class', 'holder');
 
-  // Add class 'name' to that <p>.
-  name.setAttribute('class', 'name');
+// Inside holder create <p> that will hold the name.
+const name = document.createElement('p');
 
-  // Add the name inside holder.
-  holder.appendChild(name);
+// Add class 'name' to that <p>.
+name.setAttribute('class', 'name');
 
-  // Create img element that will hold the image of cat.
-  const imgCat = document.createElement('img');
+// Add the name inside holder.
+holder.appendChild(name);
 
-  // Add the image inside holder.
-  holder.appendChild(imgCat);
+// Create img element that will hold the image of cat.
+const imgCat = document.createElement('img');
 
-  // Create <p> that will hold the counter
-  const counter = document.createElement('p');
+// Add the image inside holder.
+holder.appendChild(imgCat);
 
-  // Add class 'counter'.
-  counter.setAttribute('class', 'counter');
+// Create <p> that will hold the counter
+const counter = document.createElement('p');
 
-  // Add the image inside holder.
-  holder.appendChild(counter);
+// Add class 'counter'.
+counter.setAttribute('class', 'counter');
 
-  // Display the '.holder' div on DOM.
-  displayArea.appendChild(holder);
-}
+// Add the image inside holder.
+holder.appendChild(counter);
 
-// First build the display area structure and then after that populate the cat list.
-buildDisplayArea();
+// Display the '.holder' div on DOM.
+displayArea.appendChild(holder);
 
 /*
  * Create new img with the image of the cat, and place it inside cat-list.
@@ -92,6 +88,10 @@ for (let i = 0; i < allCats.length; i++) {
 
   // Display the cat option inside the '.cat-list'.
   catList.appendChild(catOption);
+
+  catOption.addEventListener('click', function() {
+    console.log(counter);
+  });
 }
 
 /*
