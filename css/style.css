@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+html {
+  font-size: 100.01%;
+}
+
+.wrapper{
+  width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.holder{
+  width: 40%;
+  overflow: hidden;
+}
+.cat {
+  width: 100%;
+}
+
+.cat:hover {
+  cursor: pointer;
+}
+
+.counter, .name {
+  font: bold 48px/32px Arial, Verdana, sans-serif;
+  margin: 40px auto;
+  text-align: center;
+}
