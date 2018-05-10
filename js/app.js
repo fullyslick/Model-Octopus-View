@@ -31,25 +31,26 @@ const allCats = [{
  * Create new img with the image of the cat, and place it inside cat-list.
  * Add event listener to that image to switch the cat displayed on the displayArea.
  */
- for (let i = 0; i < allCats.length; i++) {
-   // Create img to display cat image on the '.cat-list'.
-   const catOption = document.createElement('img');
+for (let i = 0; i < allCats.length; i++) {
+  // Create img to display cat image on the '.cat-list'.
+  const catOption = document.createElement('img');
 
-   // Add the image of the cat to the cat option.
-   catOption.setAttribute('src', allCats[i].imgSrc);
+  // Add the image of the cat to the cat option.
+  catOption.setAttribute('src', allCats[i].imgSrc);
 
-   // Display the cat option inside the '.cat-list'.
-   catList.appendChild(catOption);
+  // Display the cat option inside the '.cat-list'.
+  catList.appendChild(catOption);
 }
 
 /*
-* Create new div '.holder' and inside of it:
-* <p class="name"> - cats name
-* <img src=""> - cats image
-* <p class="counter"> - counter for clicks
-* eventListtener that will update the counter on click of the image
-* display the '.holder' on the DOM
-*/
+ * Build the displayArea HTML structure:
+ * Create new div '.holder' and inside of it:
+ * <p class="name"> - cats name
+ * <img src=""> - cats image
+ * <p class="counter"> - counter for clicks
+ * eventListtener that will update the counter on click of the image
+ * display the '.holder' on the DOM
+ */
 // Create div class 'holder'
 const holder = document.createElement("div");
 
@@ -83,7 +84,7 @@ holder.appendChild(counter);
 // Display the '.holder' div on DOM.
 displayArea.appendChild(holder);
 
- /*
+/*
  * Create new div '.holder' for every cat, that contains:
  * <p class="name"> - cats name
  * <img src="allCats[index].srcImg"> - cats image
