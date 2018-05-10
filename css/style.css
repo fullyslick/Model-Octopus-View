@@ -16,23 +16,25 @@ html {
   font-size: 100.01%;
 }
 
-.wrapper{
-  width: 960px;
+.wrapper {
+  max-width: 960px;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
-.holder{
+.holder {
   width: 40%;
   overflow: hidden;
 }
-.cat {
+
+img {
   width: 100%;
 }
 
-.cat:hover {
+img:hover {
   cursor: pointer;
 }
 

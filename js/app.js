@@ -1,54 +1,70 @@
-// Get all catsImages, should return a NodeList.
-const catsImg = document.querySelectorAll('.cat');
+// Get the wrapper that will hold the cats
+const wrapper = document.querySelector('.wrapper');
 
-// Get all counters, should return a NodeList.
-const counter = document.querySelectorAll('.counter');
+// Holds the cats that will be displayed.
+const allCats = ['Jacky', 'Perry', 'Dustin'];
 
-// Get all cats names, should return a NodeList.
-const catNames = document.querySelectorAll('.name');
+/* Create DOM new div '.holder' for every cat, that contains:
+ * <p class="name"> - cats name
+ * <img src="images/cat.jpg"> - cats image
+ * <p class="counter"> - counter for clicks
+ * eventListtener that will update the counter on click
+ * display the '.holder' on the DOM
+ */
+for (let i = 0; i < allCats.length; i++) {
 
-// Constructor from which new cats will be made.
-function Cats(name, catIndex) {
-  this.name = name;
-  this.catIndex = catIndex;
-  this.clicks = 0;
-}
+  // Create div class 'holder'
+  const holder = document.createElement("div");
 
-// Method that add Click event listener to all cats that are created.
-Cats.prototype.clickEvent = function() {
+  // Add 'holder' class to the new div.
+  holder.setAttribute('class', 'holder');
 
-  // Stores the number of clicks for each cat.
-  let clicks = this.clicks;
+  // Inside holder create <p> that will hold the name.
+  const name = document.createElement('p');
 
-  // Stores the exact counter below this very cat.
-  const catCounter = counter[this.catIndex];
+  // Add class 'name' to that <p>.
+  name.setAttribute('class', 'name');
 
-  // Add click listenet for the cat.
-  catsImg[this.catIndex].addEventListener('click', function() {
+  // Place the name of the cat in that <p>.
+  name.textContent = allCats[i];
 
-    // Increment the local variable clicks.
+  // Add the name inside holder.
+  holder.appendChild(name);
+
+  // Create img element that will hold the image of cat.
+  const imgCat = document.createElement('img');
+
+  // Add src attribute to add the jpg file to img tag.
+  imgCat.setAttribute('src', 'images/cat.jpg');
+
+  // Add the image inside holder.
+  holder.appendChild(imgCat);
+
+  // Create local variable that will store the clicks.
+  let clicks = 0;
+
+  // Create <p> that will hold the counter
+  const counter = document.createElement('p');
+
+  // Add class 'counter'.
+  counter.setAttribute('class', 'counter');
+
+  // Set the default 0 number of clicks as inner txt.
+  counter.textContent = clicks;
+
+  // Add the image inside holder.
+  holder.appendChild(counter);
+
+  // Add click listener for the cat image.
+  imgCat.addEventListener('click', function() {
+
+    // Increment the clicks
     clicks += 1;
 
-    // Display the clicks on the counter of that cat.
-    catCounter.innerHTML = clicks;
+    // Display the clicks on the cat counter.
+    counter.innerHTML = clicks;
   });
+
+  // Display the '.holder' div on DOM.
+  wrapper.appendChild(holder);
 }
-
-// Method that will display the name of the cat above the image.
-Cats.prototype.displayName = function() {
-
-  catNames[this.catIndex].innerHTML = this.name;
-}
-
-// Create new cats
-const jacky = new Cats("Jacky", 0);
-const perry = new Cats("Perry", 1);
-
-/* Call the methods on the new cats objects,
- * to display cats name and attach event listeners
- */
-jacky.clickEvent();
-jacky.displayName();
-
-perry.clickEvent();
-perry.displayName();
