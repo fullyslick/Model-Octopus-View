@@ -4,10 +4,8 @@ const catList = document.querySelector('.cat-list');
 // Get the displayArea that will hold the cats
 const displayArea = document.querySelector('.display-area');
 
-/* Global variable that will hold the get the cat property clicks,
- * and then this global variable will be displayed on counter as number of clicks.
- */
-let clicksToDisplay = 0;
+// Global variable that will hold the index of currently selected cat.
+let currentCatIndex = 0;
 
 // Holds the cats that will be displayed.
 const allCats = [{
@@ -91,7 +89,9 @@ for (let i = 0; i < allCats.length; i++) {
 
   // On click of a cat img display the cat on the display area.
   catOption.addEventListener('click', function() {
-    
+    // Change the index of currently selected cat.
+    currentCatIndex = i;
+
     // Display the cat name.
     name.innerHTML = allCats[i].name;
 
