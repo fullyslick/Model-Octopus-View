@@ -2,11 +2,31 @@
 const wrapper = document.querySelector('.wrapper');
 
 // Holds the cats that will be displayed.
-const allCats = ['Jacky', 'Perry', 'Dustin'];
+const allCats = [{
+  name: 'Jacky',
+  imgSrc: 'images//cat.jpg',
+  clicks: 0
+}, {
+  name: 'Adam',
+  imgSrc: 'images//adam.jpg',
+  clicks: 0
+}, {
+  name: 'Bread',
+  imgSrc: 'images//bread.jpg',
+  clicks: 0
+}, {
+  name: 'Larry',
+  imgSrc: 'images//larry.jpg',
+  clicks: 0
+}, {
+  name: 'Spike',
+  imgSrc: 'images//spike.jpg',
+  clicks: 0
+}];
 
 /* Create DOM new div '.holder' for every cat, that contains:
  * <p class="name"> - cats name
- * <img src="images/cat.jpg"> - cats image
+ * <img src="allCats[index].srcImg"> - cats image
  * <p class="counter"> - counter for clicks
  * eventListtener that will update the counter on click
  * display the '.holder' on the DOM
@@ -26,7 +46,7 @@ for (let i = 0; i < allCats.length; i++) {
   name.setAttribute('class', 'name');
 
   // Place the name of the cat in that <p>.
-  name.textContent = allCats[i];
+  name.textContent = allCats[i].name;
 
   // Add the name inside holder.
   holder.appendChild(name);
@@ -35,7 +55,7 @@ for (let i = 0; i < allCats.length; i++) {
   const imgCat = document.createElement('img');
 
   // Add src attribute to add the jpg file to img tag.
-  imgCat.setAttribute('src', 'images/cat.jpg');
+  imgCat.setAttribute('src', allCats[i].imgSrc);
 
   // Add the image inside holder.
   holder.appendChild(imgCat);
@@ -59,10 +79,10 @@ for (let i = 0; i < allCats.length; i++) {
   imgCat.addEventListener('click', function() {
 
     // Increment the clicks
-    clicks += 1;
+    allCats[i].clicks += 1;
 
     // Display the clicks on the cat counter.
-    counter.innerHTML = clicks;
+    counter.innerHTML = allCats[i].clicks;
   });
 
   // Display the '.holder' div on DOM.
