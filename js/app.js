@@ -2,7 +2,7 @@
 const catList = document.querySelector('.cat-list');
 
 // Get the displayArea that will hold the cats
-const displayArea = document.querySelector('.displayArea');
+const displayArea = document.querySelector('.display-area');
 
 /* Global variable that will hold the get the cat property clicks,
  * and then this global variable will be displayed on counter as number of clicks.
@@ -86,11 +86,20 @@ for (let i = 0; i < allCats.length; i++) {
   // Add the image of the cat to the cat option.
   catOption.setAttribute('src', allCats[i].imgSrc);
 
-  // Display the cat option inside the '.cat-list'.
+  // Display the cat option on the cat-list.
   catList.appendChild(catOption);
 
+  // On click of a cat img display the cat on the display area.
   catOption.addEventListener('click', function() {
-    console.log(counter);
+    
+    // Display the cat name.
+    name.innerHTML = allCats[i].name;
+
+    // Display the cat image.
+    imgCat.setAttribute('src', allCats[i].imgSrc);
+
+    // Display the number of clicks on the counter.
+    counter.innerHTML = allCats[i].clicks;
   });
 }
 
