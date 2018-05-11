@@ -61,8 +61,14 @@ $(function() {
       // Empty string that will hold the html template that will be rendered
       let htmlString = '';
 
-      // Log the data returned from model.
-      console.log(octopus.getAllCats());
+      // Create the catList HTML.
+      octopus.getAllCats().forEach(function(catOption){
+        // Build the HTML template.
+        htmlString += '<button type="button">' + catOption.name + '</button>';
+      });
+      
+      // Display the cats inside catList on the screen.
+      this.catList.html(htmlString);
     }
   };
 
