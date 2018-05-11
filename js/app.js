@@ -39,6 +39,10 @@ $(function() {
 
       // Then create the displayArea html.
       viewDisplayArea.init();
+    },
+    getAllCats: function(){
+      // Return the model data to the view that is requesting it.
+      return model.allCats;
     }
   };
 
@@ -54,7 +58,11 @@ $(function() {
       viewCatList.render();
     },
     render: function() {
-      console.log(this.catList);
+      // Empty string that will hold the html template that will be rendered
+      let htmlString = '';
+
+      // Log the data returned from model.
+      console.log(octopus.getAllCats());
     }
   };
 
