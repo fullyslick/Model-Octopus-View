@@ -25,7 +25,10 @@ $(function() {
       name: 'Spike',
       imgSrc: 'images//spike.jpg',
       clicks: 0
-    }]
+    }],
+    // Model property that will hold the object of currently selected cat.
+    // Setting the currentCat to default of  -> Jacky
+    currentCat: {}
   };
 
   /* Octopus handle conversttion between modal and view.
@@ -37,12 +40,19 @@ $(function() {
       // Create catList html first.
       viewCatList.init();
 
+      // Set the the default cat that should be displayed to the first one -> Jacky
+      model.currentCat = model.allCats[0];
+
       // Then create the displayArea html.
       viewDisplayArea.init();
     },
     getAllCats: function(){
       // Return the model data to the view that is requesting it.
       return model.allCats;
+    },
+     // Return the current cat that is selected or the default.
+    getCurrentCat: function(){
+      return model.currentCat;
     }
   };
 
@@ -66,7 +76,7 @@ $(function() {
         // Build the HTML template.
         htmlString += '<button type="button">' + catOption.name + '</button>';
       });
-      
+
       // Display the cats inside catList on the screen.
       this.catList.html(htmlString);
     }
@@ -79,14 +89,15 @@ $(function() {
       // Add it as property to view -> viewDisplayArea{ displayArea: $('.display-area') };
       this.displayArea = $('.display-area');
 
-      // View property that will hold the index of currently selected cat.
-      this.currentCatIndex = 0;
-
       // Display the view on the screen.
       viewDisplayArea.render();
     },
     render: function(){
-      console.log(this.displayArea);
+      // Empty string that will hold the html template that will be rendered.
+      let htmlString = '';
+
+      // Will return an object
+      console.log(octopus.getCurrentCat());
     }
   }
 
