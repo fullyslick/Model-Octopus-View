@@ -78,11 +78,11 @@ displayArea.appendChild(holder);
  * Add event listener to that image to switch the cat displayed on the displayArea.
  */
 for (let i = 0; i < allCats.length; i++) {
-  // Create img to display cat image on the '.cat-list'.
-  const catOption = document.createElement('img');
+  // Create <p> to display cat name on the '.cat-list'.
+  const catOption = document.createElement('button');
 
-  // Add the image of the cat to the cat option.
-  catOption.setAttribute('src', allCats[i].imgSrc);
+  // Add the name of the cat to the cat option.
+  catOption.innerHTML = allCats[i].name;
 
   // Display the cat option on the cat-list.
   catList.appendChild(catOption);
