@@ -25,55 +25,63 @@ $(function() {
       name: 'Spike',
       imgSrc: 'images//spike.jpg',
       clicks: 0
-    }];
+    }]
   };
 
   /* Octopus handle conversttion between modal and view.
    * Applys different methods called from view to the modal.
    */
-  let octopus = {};
+  let octopus = {
+    // Should render catList and displayArea from view
+    init: function() {
+      // Create catList html first.
+      viewCatList.init();
 
-  // Rendering and initilisation of the views (HTML).
-  let view = {};
+      // Then create the displayArea html.
+      viewDisplayArea.init();
+    }
+  };
+
+  // Rendering and initilisation of the catList view (HTML).
+  let viewCatList = {
+    // Build the HTML that will be rendered on the screen.
+    init: function() {
+      // Get the cat list that will hold the options with cats.
+      // Add it as property to view -> viewCatList{ catList: $('.cat-list') };
+      this.catList = $('.cat-list');
+
+      // Display the views on the screen.
+      viewCatList.render();
+    },
+    render: function() {
+      console.log(this.catList);
+    }
+  };
+
+  // Rendering and initilisation of the displayArea view (HTML).
+  let viewDisplayArea = {
+    init: function() {
+      // Get the displayArea that will hold the cats
+      // Add it as property to view -> viewDisplayArea{ displayArea: $('.display-area') };
+      this.displayArea = $('.display-area');
+
+      // View property that will hold the index of currently selected cat.
+      this.currentCatIndex = 0;
+
+      // Display the view on the screen.
+      viewDisplayArea.render();
+    },
+    render: function(){
+      console.log(this.displayArea);
+    }
+  }
 
   /* First function that is called
    * and that should render the catList and the displayArea
    */
-   octopus.init(); // TO:DO
-
+  octopus.init();
 });
 
-// // Get the cat list that will hold the options with cats.
-// const catList = document.querySelector('.cat-list');
-//
-// // Get the displayArea that will hold the cats
-// const displayArea = document.querySelector('.display-area');
-//
-// // Global variable that will hold the index of currently selected cat.
-// let currentCatIndex = 0;
-//
-// // Holds the cats that will be displayed.
-// const allCats = [{
-//   name: 'Jacky',
-//   imgSrc: 'images//cat.jpg',
-//   clicks: 0
-// }, {
-//   name: 'Adam',
-//   imgSrc: 'images//adam.jpg',
-//   clicks: 0
-// }, {
-//   name: 'Bread',
-//   imgSrc: 'images//bread.jpg',
-//   clicks: 0
-// }, {
-//   name: 'Larry',
-//   imgSrc: 'images//larry.jpg',
-//   clicks: 0
-// }, {
-//   name: 'Spike',
-//   imgSrc: 'images//spike.jpg',
-//   clicks: 0
-// }];
 //
 // /*
 //  * Build the displayArea HTML structure:
