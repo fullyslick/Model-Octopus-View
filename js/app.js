@@ -96,8 +96,14 @@ $(function() {
       // Empty string that will hold the html template that will be rendered.
       let htmlString = '';
 
-      // Will return an object
-      console.log(octopus.getCurrentCat());
+      // Get the current cat from the model and assign it to a variable
+      let currentCat = octopus.getCurrentCat();
+
+      // Build the HTML template.
+      htmlString += '<div class="holder"><p class="name">'+ currentCat.name +'</p><img src="' + currentCat.imgSrc +'"><p class="counter">'+ currentCat.clicks +'</p></div>';
+
+      // Display the selected cat ( HTML template) on the screen.
+      this.displayArea.html(htmlString);
     }
   }
 
