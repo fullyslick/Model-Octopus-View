@@ -58,8 +58,7 @@ $(function() {
     increaseClicks: function() {
       model.currentCat.clicks += 1;
 
-      console.log(model.currentCat);
-
+      // Display the currently selected cat with the modified click property.
       viewDisplayArea.render();
     }
   };
@@ -93,34 +92,37 @@ $(function() {
   // Rendering and initilisation of the displayArea view (HTML).
   let viewDisplayArea = {
     init: function() {
-      // Get the displayArea that will hold the cats
-      // Add it as property to view -> viewDisplayArea{ displayArea: $('.display-area') };
-      this.displayArea = $('.display-area');
+      // Get the nodes in the HTML that will be modified.
+      this.name  = $('.name');
+      this.imgOfCat = $('img');
+      this.counter = $('.counter');
 
-      // Display the view on the screen.
+      // Render the first cat.
       viewDisplayArea.render();
+
+      // Assign event listener
+      viewDisplayArea.addClickListener();
     },
     render: function() {
-      // Empty string that will hold the html template that will be rendered.
-      let htmlString = '';
 
       // Get the current cat from the model and assign it to a variable
       let currentCat = octopus.getCurrentCat();
 
-      // Build the HTML template.
-      htmlString += '<div class="holder"><p class="name">' + currentCat.name + '</p><img src="' + currentCat.imgSrc + '"><p class="counter">' + currentCat.clicks + '</p></div>';
+      // Display the name of the cat that is currently displayed.
+      this.name.text(currentCat.name);
 
-      // Display the selected cat ( HTML template) on the screen.
-      this.displayArea.html(htmlString);
+      // Display the img src of the currently displayed cat.
+      this.imgOfCat.attr('src', currentCat.imgSrc);
 
-      // Holds the image of the cat that is displayed
-      let catImg = $('img');
-
+      // Display the number of clicks of the currently displayed cat.
+      this.counter.text(currentCat.clicks);
+    },
+    addClickListener: function(){
       /* Assign event listener on the cat image
        * and call the octupus to change the number of clicks
        * on the currently selected cat in the model
        */
-      catImg.click(function() {
+      this.imgOfCat.click(function() {
 
         // Modify the currently selected cat 'clicks' property
         octopus.increaseClicks();
