@@ -46,13 +46,21 @@ $(function() {
       // Then create the displayArea html.
       viewDisplayArea.init();
     },
-    getAllCats: function(){
+    getAllCats: function() {
       // Return the model data to the view that is requesting it.
       return model.allCats;
     },
-     // Return the current cat that is selected or the default.
-    getCurrentCat: function(){
+    // Return the current cat that is selected or the default.
+    getCurrentCat: function() {
       return model.currentCat;
+    },
+    // Modifies the clicks property of the currentCat
+    increaseClicks: function() {
+      model.currentCat.clicks += 1;
+
+      console.log(model.currentCat);
+
+      viewDisplayArea.render();
     }
   };
 
@@ -72,7 +80,7 @@ $(function() {
       let htmlString = '';
 
       // Create the catList HTML.
-      octopus.getAllCats().forEach(function(catOption){
+      octopus.getAllCats().forEach(function(catOption) {
         // Build the HTML template.
         htmlString += '<button type="button">' + catOption.name + '</button>';
       });
@@ -92,7 +100,7 @@ $(function() {
       // Display the view on the screen.
       viewDisplayArea.render();
     },
-    render: function(){
+    render: function() {
       // Empty string that will hold the html template that will be rendered.
       let htmlString = '';
 
@@ -100,10 +108,23 @@ $(function() {
       let currentCat = octopus.getCurrentCat();
 
       // Build the HTML template.
-      htmlString += '<div class="holder"><p class="name">'+ currentCat.name +'</p><img src="' + currentCat.imgSrc +'"><p class="counter">'+ currentCat.clicks +'</p></div>';
+      htmlString += '<div class="holder"><p class="name">' + currentCat.name + '</p><img src="' + currentCat.imgSrc + '"><p class="counter">' + currentCat.clicks + '</p></div>';
 
       // Display the selected cat ( HTML template) on the screen.
       this.displayArea.html(htmlString);
+
+      // Holds the image of the cat that is displayed
+      let catImg = $('img');
+
+      /* Assign event listener on the cat image
+       * and call the octupus to change the number of clicks
+       * on the currently selected cat in the model
+       */
+      catImg.click(function() {
+
+        // Modify the currently selected cat 'clicks' property
+        octopus.increaseClicks();
+      });
     }
   }
 
