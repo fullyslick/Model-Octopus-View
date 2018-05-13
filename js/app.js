@@ -1,5 +1,6 @@
 $(function() {
 
+  /* =========== Model =========== */
   // Model holds all the data that will be used
   let model = {
     // allCats is the data that is going to be used.
@@ -31,6 +32,7 @@ $(function() {
     currentCat: {}
   };
 
+  /* =========== Octopus =========== */
   /* Octopus handle conversttion between modal and view.
    * Applys different methods called from view to the modal.
    */
@@ -69,6 +71,7 @@ $(function() {
     }
   };
 
+  /* =========== View =========== */
   // Rendering and initilisation of the catList view (HTML).
   let viewCatList = {
     // Build the HTML that will be rendered on the screen.
