@@ -93,7 +93,7 @@ $(function() {
   let viewDisplayArea = {
     init: function() {
       // Get the nodes in the HTML that will be modified.
-      this.name  = $('.name');
+      this.name = $('.name');
       this.imgOfCat = $('img');
       this.counter = $('.counter');
 
@@ -117,7 +117,7 @@ $(function() {
       // Display the number of clicks of the currently displayed cat.
       this.counter.text(currentCat.clicks);
     },
-    addClickListener: function(){
+    addClickListener: function() {
       /* Assign event listener on the cat image
        * and call the octupus to change the number of clicks
        * on the currently selected cat in the model
