@@ -75,17 +75,23 @@ $(function() {
       viewCatList.render();
     },
     render: function() {
-      // Empty string that will hold the html template that will be rendered
-      let htmlString = '';
-
-      // Create the catList HTML.
+      /* Get all the cats from the model using octopus,
+       * for each cat create a button,
+       * and add eventListtener.
+       */
       octopus.getAllCats().forEach(function(catOption) {
-        // Build the HTML template.
-        htmlString += '<button type="button">' + catOption.name + '</button>';
-      });
+        // Create catButton DOM element and store it in variable.
+        let catButton = $('<button type="button"></button>').text(catOption.name);
 
-      // Display the cats inside catList on the screen.
-      this.catList.html(htmlString);
+        // Assign click listener on every catButton that is created.
+        catButton.click(function() {
+          // Log the cat from the model.
+          console.log(catOption);
+        });
+
+        // Add the catButton to the HTML.
+        viewCatList.catList.append(catButton);
+      });
     }
   };
 
