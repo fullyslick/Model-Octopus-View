@@ -51,6 +51,9 @@ $(function() {
 
       // Then create the displayArea html.
       viewDisplayArea.init();
+
+      // The init the admin panel.
+      viewAdminPanel.init();
     },
     getAllCats: function() {
       // Return the model data to the view that is requesting it.
@@ -148,6 +151,27 @@ $(function() {
         // Modify the currently selected cat 'clicks' property
         octopus.increaseClicks();
       });
+    }
+  };
+
+  // Rendering and initilisation of the admin Panel view (HTML).
+  let viewAdminPanel = {
+
+    init: function() {
+      /* Get the Admin button.
+       * Get the form.
+       * Get all the inputs from the form.
+       * Get cancel btn from the form.
+       */
+      this.adminBtn = $('admin-btn');
+
+      this.form = $('#admin-form');
+
+      this.inputName = $('#input-name');
+      this.inputImgUrl = $('#input-imgUrl');
+      this.inputClicks = $('#input-clicks');
+
+      this.cancelBtn = $('#cancel-btn');
     }
   };
 
