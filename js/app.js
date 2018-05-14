@@ -76,17 +76,14 @@ $(function() {
 
       viewDisplayArea.render();
     },
-    // Get the visibility of form.
-    getAdminVisibility: function() {
-      return model.isAdminVisible;
-    },
     // Show admin panel.
     openAdminView: function(){
       // Change the visibility to true.
       model.isAdminVisible = true;
 
-      // Change the visibility of the admin panel.
-      viewAdminPanel.changeVisibility();
+      // Change the visibility of the admin panel,
+      // and pass the value of isAdminVisible from model.
+      viewAdminPanel.changeVisibility(model.isAdminVisible);
     }
   };
 
@@ -185,9 +182,6 @@ $(function() {
 
       this.cancelBtn = $('#cancel-btn');
 
-      // Hide the form.
-      viewAdminPanel.changeVisibility();
-
       // Show admin panel on click of admin btn.
       this.adminBtn.click(function(){
 
@@ -208,9 +202,9 @@ $(function() {
       this.inputClicks.val(currentCat.clicks);
     },
     // Changes the visibility of the form.
-    changeVisibility: function() {
+    changeVisibility: function(isPanelVisible) {
 
-      if (octopus.getAdminVisibility()) {
+      if (isPanelVisible) {
         // Render the form.
         viewAdminPanel.render();
 
