@@ -29,7 +29,11 @@ $(function() {
     }],
     // Model property that will hold the object of currently selected cat.
     // Setting the currentCat to default of  -> Jacky
-    currentCat: {}
+    currentCat: {},
+
+    // Holds the visibilty state of admin panel.
+    // By default panel is not visible.
+    isAdminVisible: false
   };
 
   /* =========== Octopus =========== */
@@ -145,7 +149,7 @@ $(function() {
         octopus.increaseClicks();
       });
     }
-  }
+  };
 
   /* First function that is called
    * and that should render the catList and the displayArea
