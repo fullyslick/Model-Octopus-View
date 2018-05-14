@@ -84,6 +84,15 @@ $(function() {
       // Change the visibility of the admin panel,
       // and pass the value of isAdminVisible from model.
       viewAdminPanel.changeVisibility(model.isAdminVisible);
+    },
+    // Hide admin panel.
+    closeAdminView: function(){
+      // Change the visibility to false.
+      model.isAdminVisible = false;
+
+      // Change the visibility of the admin panel,
+      // and pass the value of isAdminVisible from model.
+      viewAdminPanel.changeVisibility(model.isAdminVisible);
     }
   };
 
@@ -184,9 +193,14 @@ $(function() {
 
       // Show admin panel on click of admin btn.
       this.adminBtn.click(function(){
-
         octopus.openAdminView();
       });
+
+      // Hide admin panel.
+      this.cancelBtn.click(function(){
+        octopus.closeAdminView();
+      });
+      
     },
     render: function() {
       // Get the current cat.
