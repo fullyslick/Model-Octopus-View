@@ -122,6 +122,11 @@ $(function() {
       viewCatList.render();
     },
     render: function() {
+      // If there are already rendered cat options, remove them.
+      if(viewCatList.catList.children()){
+        viewCatList.catList.empty();
+      }
+
       /* Get all the cats from the model using octopus,
        * for each cat create a button,
        * and add eventListtener.
