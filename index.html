@@ -17,6 +17,21 @@
     <img src="" alt="">
     <p class="counter"></p>
   </div>
+  <div class="admin-area">
+    <button id="admin-btn" class="admin-buttons" type="button" name="admin">Admin</button>
+    <form class="admin-form" action="index.html" method="post">
+      <label for="input-name">Name:</label>
+      <input type="text" id="input-name" value="">
+      <label for="input-imgUrl">Image URL:</label>
+      <input type="text" id="input-imgUrl" value="">
+      <label for="input-clicks">Clicks:</label>
+      <input type="text" id="input-clicks" value="">
+      <div class="save-cancel">
+        <input type="submit" class="admin-buttons" value="Save">
+        <button id="cancel-btn" class="admin-buttons" type="button" name="cancel">Cancel</button>
+      </div>
+    </form>
+  </div>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="js/app.js" charset="utf-8"></script>
 </body>
