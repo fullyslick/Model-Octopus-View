@@ -77,7 +77,7 @@ $(function() {
       viewDisplayArea.render();
     },
     // Show admin panel.
-    openAdminView: function(){
+    openAdminView: function() {
       // Change the visibility to true.
       model.isAdminVisible = true;
 
@@ -86,13 +86,19 @@ $(function() {
       viewAdminPanel.changeVisibility(model.isAdminVisible);
     },
     // Hide admin panel.
-    closeAdminView: function(){
+    closeAdminView: function() {
       // Change the visibility to false.
       model.isAdminVisible = false;
 
       // Change the visibility of the admin panel,
       // and pass the value of isAdminVisible from model.
       viewAdminPanel.changeVisibility(model.isAdminVisible);
+    },
+    // Stores the inputs into the model.
+    saveCat: function(name, imgUrl, clicks) {
+      model.currentCat.name = name;
+      model.currentCat.imgSrc = imgUrl;
+      model.currentCat.clicks = clicks;
     }
   };
 
@@ -192,15 +198,29 @@ $(function() {
       this.cancelBtn = $('#cancel-btn');
 
       // Show admin panel on click of admin btn.
-      this.adminBtn.click(function(){
+      this.adminBtn.click(function() {
         octopus.openAdminView();
       });
 
       // Hide admin panel.
-      this.cancelBtn.click(function(){
+      this.cancelBtn.click(function() {
         octopus.closeAdminView();
       });
-      
+
+      // Change model when 'save' is clicked.
+      this.form.submit(function(e) {
+        // Prevent submission of form.
+        e.preventDefault();
+
+        let valueOfName = viewAdminPanel.inputName.val();
+        let valueOfImgUrl = viewAdminPanel.inputImgUrl.val();
+        let valueOfClicks = viewAdminPanel.inputClicks.val();
+
+        // Take the values of inputs
+        // and pass them as arguments to the ocotopus
+        // to change the model.
+        octopus.saveCat(valueOfName, valueOfImgUrl, valueOfClicks );
+      });
     },
     render: function() {
       // Get the current cat.
