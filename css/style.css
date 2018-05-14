@@ -66,6 +66,7 @@ img:hover {
 
 input{
   width: 200px;
+  padding: 0 5px;
 }
 
 label {
