@@ -99,6 +99,13 @@ $(function() {
       model.currentCat.name = name;
       model.currentCat.imgSrc = imgUrl;
       model.currentCat.clicks = clicks;
+
+      // Close the admin panel.
+      octopus.closeAdminView();
+
+      // Refresh views.
+      viewCatList.render();
+      viewDisplayArea.render();
     }
   };
 
