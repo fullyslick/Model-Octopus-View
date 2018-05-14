@@ -31,7 +31,7 @@ $(function() {
     // Setting the currentCat to default of  -> Jacky
     currentCat: {},
 
-    // Holds the visibilty state of admin panel.
+    // Holds the visibility state of admin panel.
     // By default panel is not visible.
     isAdminVisible: false
   };
@@ -77,8 +77,16 @@ $(function() {
       viewDisplayArea.render();
     },
     // Get the visibility of form.
-    getAdminVisibilty: function() {
+    getAdminVisibility: function() {
       return model.isAdminVisible;
+    },
+    // Show admin panel.
+    openAdminView: function(){
+      // Change the visibility to true.
+      model.isAdminVisible = true;
+
+      // Change the visibility of the admin panel.
+      viewAdminPanel.changeVisibility();
     }
   };
 
@@ -167,7 +175,7 @@ $(function() {
        * Get all the inputs from the form.
        * Get cancel btn from the form.
        */
-      this.adminBtn = $('admin-btn');
+      this.adminBtn = $('#admin-btn');
 
       this.form = $('#admin-form');
 
@@ -179,6 +187,12 @@ $(function() {
 
       // Hide the form.
       viewAdminPanel.changeVisibility();
+
+      // Show admin panel on click of admin btn.
+      this.adminBtn.click(function(){
+
+        octopus.openAdminView();
+      });
     },
     render: function() {
       // Get the current cat.
@@ -196,7 +210,7 @@ $(function() {
     // Changes the visibility of the form.
     changeVisibility: function() {
 
-      if (octopus.getAdminVisibilty()) {
+      if (octopus.getAdminVisibility()) {
         // Render the form.
         viewAdminPanel.render();
 
