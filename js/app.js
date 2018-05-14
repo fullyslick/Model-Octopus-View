@@ -172,6 +172,22 @@ $(function() {
       this.inputClicks = $('#input-clicks');
 
       this.cancelBtn = $('#cancel-btn');
+
+      // Display the default cat.
+      viewAdminPanel.render();
+    },
+    render: function(){
+      // Get the current cat.
+      let currentCat = octopus.getCurrentCat();
+
+      // Display the name of the currentCat in the name input.
+      this.inputName.val(currentCat.name);
+
+      // Display the imgUrl of the currentCat in the imgUrl input.
+      this.inputImgUrl.val(currentCat.imgSrc);
+
+      // Display the clicks of the currentCat in the clicks input.
+      this.inputClicks.val(currentCat.clicks);
     }
   };
 
