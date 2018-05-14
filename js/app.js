@@ -75,6 +75,10 @@ $(function() {
       model.currentCat = clickedCat;
 
       viewDisplayArea.render();
+    },
+    // Get the visibility of form.
+    getAdminVisibilty: function() {
+      return model.isAdminVisible;
     }
   };
 
@@ -173,10 +177,10 @@ $(function() {
 
       this.cancelBtn = $('#cancel-btn');
 
-      // Display the default cat.
-      viewAdminPanel.render();
+      // Hide the form.
+      viewAdminPanel.changeVisibility();
     },
-    render: function(){
+    render: function() {
       // Get the current cat.
       let currentCat = octopus.getCurrentCat();
 
@@ -188,9 +192,21 @@ $(function() {
 
       // Display the clicks of the currentCat in the clicks input.
       this.inputClicks.val(currentCat.clicks);
+    },
+    // Changes the visibility of the form.
+    changeVisibility: function() {
 
-      // Display the form.
-      this.form.attr('style', 'display: block');
+      if (octopus.getAdminVisibilty()) {
+        // Render the form.
+        viewAdminPanel.render();
+
+        // Display the form.
+        this.form.attr('style', 'display: block');
+
+      } else {
+        // Hides the form.
+        this.form.attr('style', 'display: none');
+      }
     }
   };
 
