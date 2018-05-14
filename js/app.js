@@ -188,6 +188,9 @@ $(function() {
 
       // Display the clicks of the currentCat in the clicks input.
       this.inputClicks.val(currentCat.clicks);
+
+      // Display the form.
+      this.form.attr('style', 'display: block');
     }
   };
 
