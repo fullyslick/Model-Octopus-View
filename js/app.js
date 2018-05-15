@@ -226,7 +226,7 @@ $(function() {
 
         let valueOfName = viewAdminPanel.inputName.val();
         let valueOfImgUrl = viewAdminPanel.inputImgUrl.val();
-        let valueOfClicks = viewAdminPanel.inputClicks.val();
+        let valueOfClicks = parseInt(viewAdminPanel.inputClicks.val()); // converts the input to integer.
 
         // Take the values of inputs
         // and pass them as arguments to the ocotopus
