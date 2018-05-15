@@ -75,7 +75,7 @@ $(function() {
        * to update the clicks in the input of 'clicks'.
        */
        if (model.isAdminVisible) {
-         viewAdminPanel.render();
+         viewAdminPanel.renderClicks();
        }
     },
     // Changes the current cat and re-render it on the displayArea.
@@ -251,6 +251,14 @@ $(function() {
 
       // Display the imgUrl of the currentCat in the imgUrl input.
       this.inputImgUrl.val(currentCat.imgSrc);
+
+      // Display the clicks of the currentCat in the clicks input.
+      this.inputClicks.val(currentCat.clicks);
+    },
+    // Renders only the clicks on the input of the admin panel.
+    renderClicks: function(){
+      // Get the current cat.
+      let currentCat = octopus.getCurrentCat();
 
       // Display the clicks of the currentCat in the clicks input.
       this.inputClicks.val(currentCat.clicks);
