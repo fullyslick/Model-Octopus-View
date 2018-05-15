@@ -69,6 +69,14 @@ $(function() {
 
       // Display the currently selected cat with the modified click property.
       viewDisplayArea.render();
+
+      /* If the admin panel is shown,
+       * re-fresh the admin panel,
+       * to update the clicks in the input of 'clicks'.
+       */
+       if (model.isAdminVisible) {
+         viewAdminPanel.render();
+       }
     },
     // Changes the current cat and re-render it on the displayArea.
     changeCat: function(clickedCat) {
@@ -123,7 +131,7 @@ $(function() {
     },
     render: function() {
       // If there are already rendered cat options, remove them.
-      if(viewCatList.catList.children()){
+      if (viewCatList.catList.children()) {
         viewCatList.catList.empty();
       }
 
@@ -231,7 +239,7 @@ $(function() {
         // Take the values of inputs
         // and pass them as arguments to the ocotopus
         // to change the model.
-        octopus.saveCat(valueOfName, valueOfImgUrl, valueOfClicks );
+        octopus.saveCat(valueOfName, valueOfImgUrl, valueOfClicks);
       });
     },
     render: function() {
